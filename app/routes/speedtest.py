@@ -31,8 +31,8 @@ def convert_size(size_bytes):
    if size_bytes == 0:
        return "0B"
    size_name = ("bit/s", "Kbit/s", "Mbit/s", "Gbit/s")
-   i = int(math.floor(math.log(size_bytes, 1024)))
-   p = math.pow(1024, i)
+   i = int(math.floor(math.log(size_bytes, 1000)))
+   p = math.pow(1000, i)
    s = round(size_bytes / p, 2)
    return "%s %s" % (s, size_name[i])
 
@@ -53,6 +53,7 @@ def notify_speedtest_or_threshold_failure(notify_request: Union[SpeedTest, Speed
         for metric in notify_request.metrics:
             operator = ">" if metric.name == "Download" or metric.name == "Upload" else "<"
             message += "\t* " + metric.name + " must be " + operator + metric.threshold + " but is " + metric.value  + "\n" 
+    
     notify_to_gotify(settings.SPEEDTEST_GOTIFY_APP_TOKEN, title, message)
 
 
