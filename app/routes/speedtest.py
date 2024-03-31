@@ -27,7 +27,7 @@ class SpeedThresholdFailure(BaseModel):
     metrics: List[SpeedThresholdFailureMetric]
 
 class TestNotificationRequest(BaseModel):
-    message: int
+    message: str
 
 
 def convert_size(size_bytes):
