@@ -26,6 +26,9 @@ class SpeedThresholdFailure(BaseModel):
     site_name: str
     metrics: List[SpeedThresholdFailureMetric]
 
+class TestNotificationRequest(BaseModel):
+    message: int
+
 
 def convert_size(size_bytes):
    if size_bytes == 0:
@@ -37,10 +40,13 @@ def convert_size(size_bytes):
    return "%s %s" % (s, size_name[i])
 
 @router.post("")
-def notify_speedtest_or_threshold_failure(notify_request: Union[SpeedTest, SpeedThresholdFailure]):
+def notify_speedtest_or_threshold_failure(notify_request: Union[SpeedTest, SpeedThresholdFailure, TestNotificationRequest]):
     title = ""
     message = ""
-    if(isinstance(notify_request, SpeedTest)):
+    if(isinstance(notify_request, TestNotificationRequest)):
+        title="Notification test"
+        message = notify_request.message
+    elif(isinstance(notify_request, SpeedTest)):
         title = "SpeedTest Run"
         message = "Site: " + notify_request.site_name + "\n" \
             + "Download: " + convert_size(notify_request.download) + "\n" \
