@@ -8,7 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
     - name: Extract tag name
       run: |
         TAG=$(echo $GITHUB_REF_NAME | sed 's/release-//')
