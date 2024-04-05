@@ -1,5 +1,7 @@
 # apiservice2gotify
 
+[![Build image and push to docker hub](https://github.com/PascalRomb/apiservice2gotify/actions/workflows/release.yml/badge.svg)](https://github.com/PascalRomb/apiservice2gotify/actions/workflows/release.yml)
+
 A simple integration between another service using Rest API and [Gotify](https://gotify.net) Server.
 
 At the moment the following API Services are supported:
