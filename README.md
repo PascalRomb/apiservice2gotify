@@ -15,7 +15,7 @@ version: '3'
 services:
   apiservice-2-gotify:
     restart: unless-stopped
-    image: apiservice2gotify:latest
+    image: rhombusthere/apiservice2gotify:latest
     ports: 
      - "8000:8000"
     volumes:
