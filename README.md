@@ -22,6 +22,7 @@ services:
 
 Then create a .env file with the following content:
 ```
+WUD_GOTIFY_APP_TOKEN = <app_token_from_gotify_server>
 SPEEDTEST_GOTIFY_APP_TOKEN = <app_token_from_gotify_server>
 GOTIFY_SERVER_URL = <gotify_server_ip_address>
 ```
@@ -31,3 +32,9 @@ GOTIFY_SERVER_URL = <gotify_server_ip_address>
 * Go to Admin page.
 * Select notification under settings
 * Enable webook notification and set http(s)://<ip-address:port>/api/v1/notify/speedtest as recipient url.
+
+#### SpeedTestTracker
+Configure What's up Docker using the following docker environments:
+- WUD_TRIGGER_HTTP_GOTIFY_URL=http(s)://<ip-address:port>/api/v1/notify/whatsupdocker
+- WUD_TRIGGER_HTTP_GOTIFY_MODE=batch
+- WUD_TRIGGER_HTTP_GOTIFY_ONCE=false

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter
-from app.routes import speedtest
+from app.routes import speedtest, whatsupdocker
 from app.settings import settings
 import uvicorn
 
@@ -9,6 +9,7 @@ app = FastAPI()
 api_router = APIRouter()
 
 api_router.include_router(speedtest.router)
+api_router.include_router(whatsupdocker.router)
 app.include_router(api_router, prefix="/api/v1/notify")
 
 
