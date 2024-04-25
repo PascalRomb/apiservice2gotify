@@ -1,5 +1,7 @@
 # apiservice2gotify
 
+[![Build image and push to docker hub](https://github.com/PascalRomb/apiservice2gotify/actions/workflows/release.yml/badge.svg)](https://github.com/PascalRomb/apiservice2gotify/actions/workflows/release.yml)
+
 A simple integration between another service using Rest API and [Gotify](https://gotify.net) Server.
 
 At the moment the following API Services are supported:
@@ -13,7 +15,7 @@ version: '3'
 services:
   apiservice-2-gotify:
     restart: unless-stopped
-    image: apiservice2gotify:latest
+    image: rhombusthere/apiservice2gotify:latest
     ports: 
      - "8000:8000"
     volumes:
@@ -33,7 +35,7 @@ GOTIFY_SERVER_URL = <gotify_server_ip_address>
 * Select notification under settings
 * Enable webook notification and set http(s)://<ip-address:port>/api/v1/notify/speedtest as recipient url.
 
-#### SpeedTestTracker
+#### What's up Docker
 Configure What's up Docker using the following docker environments:
 - WUD_TRIGGER_HTTP_GOTIFY_URL=http(s)://<ip-address:port>/api/v1/notify/whatsupdocker
 - WUD_TRIGGER_HTTP_GOTIFY_MODE=batch
