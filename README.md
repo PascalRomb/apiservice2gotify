@@ -6,6 +6,7 @@ A simple integration between another service using Rest API and [Gotify](https:/
 
 At the moment the following API Services are supported:
 - [X] [SpeedTestTracker](https://docs.speedtest-tracker.dev)
+- [X] [What's Up Docker](https://fmartinou.github.io/whats-up-docker/#/)
 
 
 ## How to configure
