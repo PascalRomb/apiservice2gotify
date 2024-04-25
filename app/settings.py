@@ -11,6 +11,7 @@ class Settings():
 
     def load_variables(self):
         load_dotenv()
+        self.WUD_GOTIFY_APP_TOKEN = self.load_variable("WUD_GOTIFY_APP_TOKEN")
         self.SPEEDTEST_GOTIFY_APP_TOKEN = self.load_variable("SPEEDTEST_GOTIFY_APP_TOKEN")
         self.GOTIFY_SERVER_URL = self.load_variable("GOTIFY_SERVER_URL")
 
