@@ -1,3 +1,4 @@
+from collections import defaultdict
 import math
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -62,13 +63,23 @@ class WhatsupDockerContainer(BaseModel):
 
 @router.post("")
 def notify_whatsupdocker(wud_containers: List[WhatsupDockerContainer]):
-    title = "New docker container releases are available"
-    message = ""
+    containers_by_watcher = defaultdict(list)
+
     for container in wud_containers:
-        message += "Watcher" + container.watcher + ". Container: " + container.name + ".\n"
+        containers_by_watcher[container.watcher].append(container)
+
+    for watcher, containers in containers_by_watcher.items():
+        notify_by_watcher(watcher, containers)
+
+
+   
+
+def notify_by_watcher(watcher: str, containers: List[WhatsupDockerContainer]): 
+    title =  str(len(containers)) + " docker releases are available for " + watcher
+    message = "Containers: \n"
+    for container in containers:
+        message += " - " + container.name + "\n"
         
 
     notify_to_gotify(settings.WUD_GOTIFY_APP_TOKEN, title, message)
-
-
     
